@@ -1,0 +1,16 @@
+[lb]
+frontend1.4191.internal ansible_host=frontend1.4191.example.opentlc.com
+
+
+[app:children]
+app1
+app2
+
+[app1]
+app1.4191.internal ansible_host=app1.4191.example.opentlc.com
+
+[app2]
+app2.4191.internal ansible_host=app2.4191.example.opentlc.com
+
+[db]
+appdb1.4191.internal ansible_host=appdb1.4191.example.opentlc.com

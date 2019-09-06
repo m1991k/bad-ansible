@@ -1,0 +1,21 @@
+---
+# tasks file for proxy-config
+
+- name: install {{haproxy_pkg}}
+  yum: 
+    name: "{{ item }}"
+    state: present
+  loop: "{{ haproxy_pkg }}"
+
+- name: start and enable haproxy
+  service: 
+    name: "{{ haproxy_svc }}"
+    state: started
+    enabled: true
+
+- name: copy haproxy config file
+  template: 
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+  notify: restart_haproxy
+

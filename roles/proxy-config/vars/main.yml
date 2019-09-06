@@ -1,0 +1,8 @@
+---
+# vars file for proxy-config
+
+haproxy_pkg:
+ - httpie
+ - haproxy
+haproxy_svc: haproxy
+GUID: 4191

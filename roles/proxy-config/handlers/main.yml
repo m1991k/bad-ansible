@@ -1,0 +1,8 @@
+---
+# handlers file for proxy-config
+
+- name: restart_haproxy
+  service:
+    name: "{{ haproxy_svc }}"    
+    state: restarted
+
