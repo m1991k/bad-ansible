@@ -19,6 +19,7 @@
   become: yes
   roles:
    - repo-config 
+  tags: yum_repo
 
 - name: configure haproxy
   gather_facts: no
@@ -26,7 +27,7 @@
   hosts: lb
   roles:
    - proxy-config
-
+  tags: haproxy
 
 - name: configure tomcat
   gather_facts: no
@@ -34,30 +35,38 @@
   hosts: app
   roles:
    - tomcat
+  tags: tomcat
 
 - name: index.html on app 1
   hosts: app1
   gather_facts: false
   become: true
-
   tasks:
   - name: copy static index.html to tomcat webapps/ansible/index.html
     copy:
       src: index.html.app1
       dest: /usr/share/tomcat/webapps/ansible/index.html
       mode: 0644
+  tags: apps, app1
 
 - name: index.html on app 1
   hosts: app2
   gather_facts: false
   become: true
-
   tasks:
   - name: copy static index.html to tomcat webapps/ansible/index.html
     copy:
       src: index.html.app2
       dest: /usr/share/tomcat/webapps/ansible/index.html
       mode: 0644
+  tags: apps, app2
 
-  
+- name: configure DB 
+  hosts: db
+  become: yes
+  gather_facts: no
+  roles:
+   - postgres  
+  tags: pg
+
 

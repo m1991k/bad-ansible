@@ -1,0 +1,26 @@
+---
+# tasks file for postgres
+
+- name: install postgres
+  yum: 
+    name: postgresql-server
+    state: present
+
+- name: check postgres stat
+  stat: 
+    path: "{{ pg_data_dir }}"
+  register: pg_dir
+
+- name: initialize postgres
+  command: "postgresql-setup initdb"
+  when: not pg_dir.stat.exists
+#  notify: restart postgres
+
+- name: start and enable postgres
+  service:  
+    name: postgresql
+    enabled: yes
+    state: started
+
+#- name: check configuration
+ # command: chkconfig postgresql on 
