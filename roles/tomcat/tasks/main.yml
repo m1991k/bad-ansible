@@ -14,14 +14,12 @@
 
 - name: create tomcat directory
   file:
-    #dest: /usr/share/tomcat/webapps/ROOT
     dest: /usr/share/tomcat/webapps/ansible/
     state: directory
 
 - name: copy index.html to tomcat /usr/share/tomcat/webapps/ansible/
   template:
     src: index.html.j2
-    #dest:  /usr/share/tomcat/webapps/ROOT/index.html
     dest:  /usr/share/tomcat/webapps/ansible/index.html
     mode: 0644
   notify: restart_tomcat

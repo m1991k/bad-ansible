@@ -1,0 +1,9 @@
+---
+
+- name: configure haproxy
+  gather_facts: no
+  become: yes
+  hosts: lb
+  roles:
+   - proxy-config
+  tags: haproxy

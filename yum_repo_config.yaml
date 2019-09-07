@@ -1,0 +1,10 @@
+---
+
+- name: configure yum repo
+  hosts: all
+  gather_facts: no
+  become: yes
+  roles:
+   - repo-config
+  tags: yum_repo
+

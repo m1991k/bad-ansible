@@ -1,0 +1,9 @@
+---
+
+- name: configure tomcat
+  become: yes
+  hosts: app
+  roles:
+   - tomcat
+  tags: tomcat
+
