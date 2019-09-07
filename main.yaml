@@ -1,5 +1,5 @@
 ---
 
-- import_playbook: yum_repo_config.yaml
-- import_playbook: haproxy_config.yaml
-- import_playbook: tomcat_config.yaml
+- import_playbook: yum_repo_pb.yaml
+- import_playbook: haproxy_pb.yaml
+- import_playbook: tomcat_pb.yaml
