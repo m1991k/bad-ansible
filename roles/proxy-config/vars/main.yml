@@ -5,4 +5,4 @@ haproxy_pkg:
  - httpie
  - haproxy
 haproxy_svc: haproxy
-GUID: 4191
+GUID: "{{ lookup('env', 'GUID') }}"
