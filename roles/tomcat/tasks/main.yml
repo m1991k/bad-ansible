@@ -17,7 +17,7 @@
     dest: "{{ tomcat_dest }}"
     state: directory
 
-- name: copy index.html to tomcat /usr/share/tomcat/webapps/ansible/
+- name: copy index.html to tomcat /usr/share/tomcat/webapps/ROOT/
   template:
     src: index.html.j2
     dest:  "{{ tomcat_dest }}/index.html"
