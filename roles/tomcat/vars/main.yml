@@ -3,4 +3,4 @@
 
 tomcat_pkg: tomcat
 tomcat_svc: tomcat
-tomcat_dest: /usr/share/tomcat/webapps/ROOT
+tomcat_dest: /usr/share/tomcat/webapps/ansible
