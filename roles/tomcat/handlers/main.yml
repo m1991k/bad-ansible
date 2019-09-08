@@ -3,5 +3,5 @@
 
 - name: restart_tomcat
   service: 
-    name: tomcat
+    name: "{{ tomcat_svc }}"
     state: restarted

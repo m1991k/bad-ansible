@@ -3,23 +3,23 @@
 
 - name: install tomcat
   yum:
-    name: tomcat
+    name: "{{ tomcat_pkg }}"
     state: present
 
 - name: start and enable tomcat
   service: 
-    name: tomcat
+    name: "{{ tomcat_svc }}"
     enabled: yes
     state: started
 
 - name: create tomcat directory
   file:
-    dest: /usr/share/tomcat/webapps/ansible
+    dest: "{{ tomcat_dest }}"
     state: directory
 
 - name: copy index.html to tomcat /usr/share/tomcat/webapps/ansible/
   template:
     src: index.html.j2
-    dest:  /usr/share/tomcat/webapps/ansible/index.html
+    dest:  "{{ tomcat_dest }}/index.html"
     mode: 0644
   notify: restart_tomcat
