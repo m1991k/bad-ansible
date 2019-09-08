@@ -3,3 +3,4 @@
 - import_playbook: yum_repo_pb.yaml
 - import_playbook: haproxy_pb.yaml
 - import_playbook: tomcat_pb.yaml
+- import_playbook: postgres_pb.yaml

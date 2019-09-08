@@ -14,7 +14,7 @@
 
 - name: create tomcat directory
   file:
-    dest: /usr/share/tomcat/webapps/ansible/
+    dest: /usr/share/tomcat/webapps/ansible
     state: directory
 
 - name: copy index.html to tomcat /usr/share/tomcat/webapps/ansible/

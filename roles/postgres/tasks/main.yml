@@ -3,24 +3,30 @@
 
 - name: install postgres
   yum: 
-    name: postgresql-server
+    name: "{{ item }}"
     state: present
+  loop: "{{ pg_pkg }}"
+
 
 - name: check postgres stat
-  stat: 
-    path: "{{ pg_data_dir }}"
+  find:
+    paths: "{{ pg_data_dir }}"
   register: pg_dir
+
 
 - name: initialize postgres
   command: "postgresql-setup initdb"
-  when: not pg_dir.stat.exists
+  when: pg_dir.matched == 0
 #  notify: restart postgres
+
+
+- name: turn on postgres starts at boot
+  command: chkconfig postgresql on 
+  when: pg_dir.matched == 0
+
 
 - name: start and enable postgres
   service:  
-    name: postgresql
+    name: "{{ pg_svc }}"
     enabled: yes
     state: started
-
-#- name: check configuration
- # command: chkconfig postgresql on 

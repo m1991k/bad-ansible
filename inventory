@@ -1,5 +1,8 @@
+[all:vars]
+GUID= "{{ lookup('env', 'GUID') }}"
+
 [lb]
-frontend1.4191.internal ansible_host=frontend1.4191.example.opentlc.com
+frontend1."{{ GUID}}".internal ansible_host=frontend1."{{ GUID}}".example.opentlc.com
 
 
 [app:children]
@@ -7,10 +10,10 @@ app1
 app2
 
 [app1]
-app1.4191.internal ansible_host=app1.4191.example.opentlc.com
+app1."{{ GUID}}".internal ansible_host=app1."{{ GUID}}".example.opentlc.com
 
 [app2]
-app2.4191.internal ansible_host=app2.4191.example.opentlc.com
+app2."{{ GUID}}".internal ansible_host=app2."{{ GUID}}".example.opentlc.com
 
 [db]
-appdb1.4191.internal ansible_host=appdb1.4191.example.opentlc.com
+appdb1."{{ GUID}}".internal ansible_host=appdb1."{{ GUID}}".example.opentlc.com

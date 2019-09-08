@@ -1,19 +1,10 @@
 ---
 # vars file for postgres
-
-ssl_pkg:
- - bash
- - openssl
- - libssl-dev
- - libssl-doc
-pg_pkg:
-  - postgresql
-  - postgresql-contrib
-  - libpq-dev
-  - python-psycopg2
+pg_pkg: 
+ - postgresql-server
+pg_svc: postgresql
+pg_data_dir: /var/lib/pgsql/data
 db:
  name: postgresdb
  user: admin
  password: admin123
-pg_data_dir: /var/lib/pgsql/data
-
