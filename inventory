@@ -1,5 +1,5 @@
 [all:vars]
-GUID= "{{ lookup('env', 'GUID') }}"
+
 
 [lb]
 frontend1."{{ GUID}}".internal ansible_host=frontend1."{{ GUID}}".example.opentlc.com
